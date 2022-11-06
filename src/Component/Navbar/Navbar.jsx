@@ -8,7 +8,7 @@ function Navbar({loginData,logout}) {
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to="home">
-            Movies
+            Noxe
           </Link>
           <button
             className="navbar-toggler"

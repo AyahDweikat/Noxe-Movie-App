@@ -2,6 +2,7 @@ import React, { useEffect ,useState} from 'react';
 import axios from 'axios';
 import styles from './Home.module.css';
 import { useNavigate } from 'react-router-dom';
+
 function Home() {
   let [trendingMovies, setTrendingMovies]= useState([]);
   let [trendingTv, setTrendingTv]= useState([]);
