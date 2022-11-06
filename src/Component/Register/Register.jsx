@@ -19,19 +19,19 @@ function Register() {
   let [loading, setLoading]= useState(false)
 
 
-  //let [errorList, setErrorList]= useState([])
+  let [errorList, setErrorList]= useState([])
   let submitFormData = async(e)=>{
     e.preventDefault();
     setLoading(true);
-    // let validateResult = validationForm();
-    // if(validateResult.hasOwnProperty('error')){
-    //   setErrorList(validateResult.error.details);
-    // }
+    let validateResult = validationForm();
+    if(validateResult.hasOwnProperty('error')){
+      setErrorList(validateResult.error.details);
+    }
     let {data} = await axios.post('https://knowledge-saraha.herokuapp.com/users/signUp', user);
     // console.log(data);
     if(data.message === 'success'){
-    // console.log(data.message);
-    // setLoading(false);
+    console.log(data.message);
+    setLoading(false);
     gotoLogin();
     }
   }
@@ -50,13 +50,14 @@ function Register() {
     return schema.validate(user, {abortEarly: false});
   }
   return (
+    
     <div>
       {/* {console.log(errorList)} */}
-      {/* {errorList.map((error, idx)=>{
+      {errorList.map((error, idx)=>{
         return (
           <div className="alert alert-danger" key={idx}>{error.message}</div>
         )
-      })} */}
+      })}
       <form onSubmit={submitFormData}>
         <div className="form-group my-3">
           <label htmlFor="name">Name</label>
@@ -68,6 +69,11 @@ function Register() {
             aria-describedby="name"
             placeholder="Name"
           />
+          {/* {errorList[0]?.message? 
+          <small id="emailHelp" className="form-text text-danger">
+          {errorList[0].message}
+          </small>
+          : null} */}
         </div>
         <div className="form-group my-3">
           <label htmlFor="age">Age</label>
@@ -79,6 +85,11 @@ function Register() {
             aria-describedby="emailHelp"
             placeholder="Age"
           />
+          {/* {errorList[1]?.message? 
+          <small id="emailHelp" className="form-text text-danger">
+          {errorList[1].message}
+          </small>
+          : null} */}
         </div>
         <div className="form-group my-3">
           <label htmlFor="email">Email address</label>
@@ -90,9 +101,17 @@ function Register() {
             aria-describedby="emailHelp"
             placeholder="Email"
           />
+          
+          {
+          // errorList[2]?.message? 
+          // <small id="emailHelp" className="form-text text-danger">
+          // {errorList[2].message}
+          // </small>
+          // :
           <small id="emailHelp" className="form-text text-muted">
             We'll never share your email with anyone else.
           </small>
+          }
         </div>
         <div className="form-group my-3">
           <label htmlFor="password">Password</label>
@@ -103,6 +122,11 @@ function Register() {
             name="password"
             placeholder="Password"
           />
+          {/* {errorList[3]?.message? 
+          <small id="emailHelp" className="form-text text-danger">
+          {errorList[3].message}
+          </small>
+          : null} */}
         </div>
 
         <button type="submit" className="btn btn-primary">

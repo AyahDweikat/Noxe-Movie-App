@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import styles from './People.module.css';
 
 function People() {
